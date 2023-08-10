@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.dao.IncomeDao">
+
+
+<insert id="insertIncome" parameterType="income">
+    insert into Income (name) values (#{name})
+</insert>
+
+<delete id="deleteIncome"   >
+    delete from income where id=#{id}
+</delete>
+
+ <update id="updateIncome"    parameterType="income">
+     update income set name=#{name} where  id=#{id}
+ </update>
+
+    <select id="findById" resultType="income">
+        select * from income where id=#{id}
+    </select>
+
+    <select id="findAll" resultType="income">
+        select * from income
+    </select>
+</mapper>

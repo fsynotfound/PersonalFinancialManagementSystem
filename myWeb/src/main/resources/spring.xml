@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+       <!--要求Spring容器创建来自于Druid.jar的数据库连接池管理对象-->
+       <!--
+          DruidDataSource的实例对象就是数据库连接池管理对象。
+          这个对象在程序启动时预先创建指定数量的Connection
+          然后在MyBatis推送SQL语句时为其提供需要Connection对象
+          通过Bean标签要求Spring容器创建DruidDataSource实例对象
+        --> 
+        <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource">
+            <!--设置创建Connection需要参数【url,userName,password,driver】-->
+                <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/test"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123"/>
+        </bean>
+
+        <!--
+           要求Spring容器创建SqlSessionFactory对象
+        -->
+
+         <bean  id ="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+                 <!--将MyBatis核心配置文件以及sql映射文件信息交给SqlSessionFactory-->
+                 <property name="configLocation" value="classpath:mybatis.xml"/>
+                 <!--使用DruidDataSource取代MyBatis原有的数据库连接池-->
+                 <property name="dataSource" ref="druidDataSource"/>
+         </bean>
+
+         <!--
+              要求Spring容器创建MapperScannerConfigurer
+              MapperScannerConfigurer可以通过SqlSessionFactory对象创建SqlSession对象
+              通过SqlSession对象扫描指定空间下Dao接口并生成Dao接口实现类以及实现类的实例对象
+              这些实例对象就是MyBatis中Dao代理对象，这些Dao代理对象存放Spring容器中
+              这些Dao代理对象对应key就是其关联的Dao接口的首字母小写名字
+         -->
+         <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+                 <!--
+                    将Spring容器中SqlSessionFactory对象对应key交给MapperScannerConfiguuer对象
+                    MapperScannerConfiurer根据key向Spring容器索要SqlSessionFactory的对象
+                 -->
+                 <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+
+                 <!--给出sqlSession用于扫描Dao接口位置-->
+                 <property name="basePackage" value="com.test.dao"/>
+         </bean>
+
+          <context:component-scan base-package="com.test"/>
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--通知Spring容器扫描所有与@ResponseBody关联的处理器-->
+    <mvc:annotation-driven/>
+</beans>

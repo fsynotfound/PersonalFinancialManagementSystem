@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.dao.EconomicsDao">
+
+
+<insert id="insert" parameterType="economics">
+    insert into economics (shop, incomeId, consumptionId, money, date)
+    values(#{shop},#{incomeId},#{consumptionId},#{money},now())
+</insert>
+
+<delete id="delete"   >
+    delete from economics where id=#{id}
+</delete>
+
+ <update id="update"    parameterType="economics">
+     update economics set shop=#{shop} ,money=#{money} ,date=now() where  id=#{id}
+ </update>
+
+    <select id="findById" resultType="economics">
+        select * from economics where id=#{id}
+    </select>
+
+    <select id="findAll" resultType="economics">
+        select * from economics
+    </select>
+</mapper>

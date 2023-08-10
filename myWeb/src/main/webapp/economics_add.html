@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="/myWeb/jquery/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="/myWeb/jquery/common_2.js"></script>
+</head>
+<body>
+        <center>
+            <form action="/myWeb/economics/insert.do">
+
+                <table border="2">
+                     <tr>
+                         <td>
+                             <input type="radio" value="1" name="rd">消费
+                         </td>
+                         <td>
+                             <input type="radio" value="2" name="rd">收入
+                         </td>
+                     </tr>
+
+                    <tr style="display:none">
+                        <td>
+                             消费类型
+                        </td>
+                        <td>
+                            <select id="consumptionId" name="consumptionId">
+
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr style="display:none">
+                        <td>
+                            收入类型
+                        </td>
+                        <td>
+                            <select id="incomeId" name="incomeId">
+
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            商家
+                        </td>
+                        <td>
+                            <input type="text" name="shop">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            金额
+                        </td>
+                        <td>
+                            <input type="text" name="money">
+
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                             <input type="submit" value="记录入库"/>
+                        </td>
+                        <td>
+                            <input type="reset" >
+
+                            </select>
+                        </td>
+                    </tr>
+
+                </table>
+            </form>
+        </center>
+</body>
+</html>

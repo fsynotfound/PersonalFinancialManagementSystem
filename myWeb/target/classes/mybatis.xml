@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+
+    <!--日志输出-->
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+     <!--类型别名标签-->
+    <typeAliases>
+      <package name="com.test.entity"/>
+    </typeAliases>
+
+    <!--设置SQL映射文件位置-->
+    <mappers>
+        <!--<mapper resource="com/test/dao/DeptDao.xml"/>-->
+        <package name="com.test.dao"/>
+    </mappers>
+
+</configuration>

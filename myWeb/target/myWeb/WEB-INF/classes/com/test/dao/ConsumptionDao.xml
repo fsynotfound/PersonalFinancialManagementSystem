@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.dao.ConsumptionDao">
+
+
+
+    <!--消费类型添加-->
+    <insert id="insert" parameterType="Consumption">
+        insert into Consumption(id,typeName,level)
+        values(#{id},#{typeName},#{level})
+    </insert>
+
+    <!-- 消费类型一级查询 -->
+    <select id="findAllFirstConsumption" resultType="Consumption">
+           select * from consumption where level is null
+    </select>
+
+    <!--消费类型更新-->
+    <update id="update" parameterType="Consumption">
+        update consumption set typeName=#{typeName},level=#{level}
+        where id=#{id}
+    </update>
+
+    <!--消费类型删除-->
+    <delete id="delete">
+        delete from consumption where id=#{id}
+    </delete>
+
+    <!--消费类型详细信息查询-->
+    <select id="findById" resultType="Consumption">
+
+           select * from Consumption
+           where
+                id=#{id}
+
+    </select>
+</mapper>
