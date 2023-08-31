@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/consumption")
+@RequestMapping(value = "/consumption") //这里和html页面的请求地址保持一致
 public class ConsumptionController {
 
     @Autowired
@@ -32,8 +32,8 @@ public class ConsumptionController {
          }else{
              mv.addObject("info","一级消费类型添加成功");
          }
-         mv.setViewName("info");
-        return mv;
+         mv.setViewName("info"); //使用ModelAndView对象进行转发，默认使用forward转发
+        return mv; //返回mv,实现转发到其他的视图页面
     }
     //一级消费类型删除
 
@@ -79,7 +79,7 @@ public class ConsumptionController {
             //1.调用service提供所有一级消费类型
              consumptionList =consumptionService.findFirstConsumption();
             //2.结果处理
-            mv.addObject("list",consumptionList);
+            mv.addObject("list",consumptionList); //将consumptionList作为共享数据放入关键词为list的mv对象中
             mv.setViewName("comsumption_first_show");
             return mv;
     }

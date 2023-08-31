@@ -26,7 +26,7 @@ public class IncomeController {
        }else{
            mv.addObject("info","收入类型添加失败");
        }
-       mv.setViewName("info");
+       mv.setViewName("info"); //jsp文件的文件名
        return mv;
     }
     @RequestMapping(value = "/findAll.do")
@@ -34,7 +34,7 @@ public class IncomeController {
         ModelAndView mv = new ModelAndView();
         List list = incomeService.findAll();
         mv.addObject("list",list);
-        mv.setViewName("income_show");
+        mv.setViewName("income_show");//jsp文件的文件名
         return mv;
     }
     @RequestMapping(value = "/delete.do")

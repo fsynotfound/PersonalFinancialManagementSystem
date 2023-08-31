@@ -20,7 +20,7 @@ function fun2(){
     }
 }
 
-//将鼠标悬停的数据行的背景颜色设置为绿色
+//将鼠标悬停的数据行的背景颜色设置为绿色，this表示目标所悬停的对象
 function fun3(){
     $(this).css("backgroundColor","green");
 }

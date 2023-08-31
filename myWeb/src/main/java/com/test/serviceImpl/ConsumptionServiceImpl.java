@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 
-@Service(value = "consumptionService")
+@Service(value = "consumptionService") //value是自己设置的id编号
 public class ConsumptionServiceImpl implements ConsumptionService {
 
     @Autowired

@@ -4,7 +4,7 @@ import com.test.entity.Consumption;
 
 import java.util.List;
 
-public interface ConsumptionDao {
+public interface ConsumptionDao { //右键选中copy reference获取当前接口的全限定名称
 
     //1.消费类型添加
     public int insert(Consumption obj);

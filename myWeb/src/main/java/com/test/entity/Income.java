@@ -32,4 +32,5 @@ public class Income {
     public Income(String name) {
         this.name = name;
     }
+
 }

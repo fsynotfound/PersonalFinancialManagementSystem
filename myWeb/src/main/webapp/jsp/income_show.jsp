@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: yz33233339
-  Date: 2021/10/6
-  Time: 15:17
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -18,7 +12,7 @@
 
             $(":checkbox:first").click(fun1);
             $(":checkbox:gt(0)").click(fun2);
-            $("tr:gt(0)").mouseover(fun3);
+            $("tr:gt(0)").mouseover(fun3); //来匹配所有大于给定索引值0的元素
             $("tr:gt(0)").mouseout(fun4);
 
         })
@@ -37,7 +31,7 @@
                <c:forEach items="${requestScope.list}" var="income">
                    <tr>
                        <td><input type="checkbox"/></td>
-                       <td>${income.id}</td>
+                       <td>${income.id}</td> //第37行的var
                        <td>${income.name}</td>
                        <td><a href="/myWeb/income/delete.do?id=${income.id}">删除收入类型</a></td>
                        <td><a href="/myWeb/income/findById.do?id=${income.id}">收入类型详细信息</a></td>

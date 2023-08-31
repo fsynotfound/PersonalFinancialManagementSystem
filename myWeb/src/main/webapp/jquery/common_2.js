@@ -32,7 +32,7 @@ function fun1(){
                      }
                      $("tr:eq(1)").show();
                      $("tr:eq(2)").hide();
-                     $("td:eq(6)").text("商家")
+                     $("td:eq(6)").text("商家") //来源于economics表中的第6个td(从0开始数）
                   }
               };
     $.ajax(param);

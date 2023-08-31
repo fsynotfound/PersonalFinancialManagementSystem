@@ -6,13 +6,13 @@
 
 
 
-    <!--消费类型添加-->
+    <!--消费类型添加，id是自己起的名字，parameterType是实体类的类型，用于存入数据-->
     <insert id="insert" parameterType="Consumption">
         insert into Consumption(id,typeName,level)
         values(#{id},#{typeName},#{level})
     </insert>
 
-    <!-- 消费类型一级查询 -->
+    <!-- 消费类型一级查询，resultType用于提取数据-->
     <select id="findAllFirstConsumption" resultType="Consumption">
            select * from consumption where level is null
     </select>
